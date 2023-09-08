@@ -6,7 +6,6 @@ export const guessArray = [
   "Airplane",
   "Metallica",
   "German Shepherd",
-  "You are gay as Fuck",
   "Huge penis",
   "Winter sucks",
   "Hangman",
