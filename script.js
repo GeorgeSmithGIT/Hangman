@@ -56,23 +56,12 @@ let guessLogic = function () {
 // Function for choosing a word and displaying it
 let randomiseWord = function (cur, i, arr) {
   if (gameActive === 0) return;
-  else {
-    // Selects a random entry from the word array
-    chosenWord = guessArray[Math.floor(Math.random(guessArray) * guessArray.length)];
-    // Splits the word/sentence up into letters and puts them to lower case
-    chosenWordLettersArray = [chosenWord.split("")].flat().map(function (cur, i, arr) {
-      return cur.toLowerCase();
-    });
-    blankArray = [];
-    // Checks each letter for a space - Either pushes the space or a blank
-    chosenWordLettersArray.forEach(function (cur, i, arr) {
-      if (cur === " ") {
-        blankArray.push(" ");
-      } else {
-        blankArray.push("_");
-      }
-    });
-  }
+  chosenWord = guessArray[Math.floor(Math.random(guessArray) * guessArray.length)]; // Selects a random entry from array
+  chosenWordLettersArray = chosenWord.toLowerCase().split(""); // Splits the word into letters and puts them to lower case
+  blankArray = [];
+  chosenWordLettersArray.forEach(function (cur, i, arr) {
+    cur === " " ? blankArray.push(" ") : blankArray.push("_"); // Checks each letter for a space - Either pushes the space or a blank
+  });
   // Replaces placeholder text with the chosen word as blanks
   document.querySelector(".guessDiv").textContent = blankArray.join("");
 };
@@ -109,12 +98,10 @@ let restoreLetters = function () {
 // Event Handler for the New Game button
 document.querySelector(".buttonNewGame").addEventListener("click", function (cur, i, arr) {
   if (gameActive === 1) return;
-  else {
-    gameActive = 1;
-    counterWrongGuesses = 0;
-    footerText.classList.add("hidden");
-    randomiseWord();
-    restoreLetters();
-    imageReset();
-  }
+  gameActive = 1;
+  counterWrongGuesses = 0;
+  footerText.classList.add("hidden");
+  randomiseWord();
+  restoreLetters();
+  imageReset();
 });
