@@ -48,13 +48,13 @@ const hideLetter = function () {
 };
 
 // Function containing logic when player guesses
-let guessLogic = function () {
+const guessLogic = function () {
   if (counterWrongGuesses === 9) gameOver();
   image.src = `Hangman pics/${counterWrongGuesses}.png`;
 };
 
 // Function for choosing a word and displaying it
-let randomiseWord = function (cur, i, arr) {
+const randomiseWord = function (cur, i, arr) {
   if (gameActive === 0) return;
   chosenWord = guessArray[Math.floor(Math.random(guessArray) * guessArray.length)]; // Selects a random entry from array
   chosenWordLettersArray = chosenWord.toLowerCase().split(""); // Splits the word into letters and puts them to lower case
@@ -67,7 +67,7 @@ let randomiseWord = function (cur, i, arr) {
 };
 
 // Function to check if the game is won
-let checkIfGameWon = function () {
+const checkIfGameWon = function () {
   if (!blankArray.includes("_")) {
     footerText.classList.remove("hidden");
     footerText.textContent = "POG! YOU WON!";
@@ -76,12 +76,12 @@ let checkIfGameWon = function () {
 };
 
 // Function to reset the image
-let imageReset = function () {
+const imageReset = function () {
   image.src = `Hangman pics/0.png`;
 };
 
 // Game Over Function
-let gameOver = function () {
+const gameOver = function () {
   gameActive = 0;
   image.src = `Hangman pics/${counterWrongGuesses}.png`;
   footerText.textContent = "GAME OVER! YOU LOSE!";
@@ -89,7 +89,7 @@ let gameOver = function () {
 };
 
 // Function for resetting the letters
-let restoreLetters = function () {
+const restoreLetters = function () {
   allDivs.forEach(function (cur, i, arr) {
     cur.classList.remove("hidden");
   });
